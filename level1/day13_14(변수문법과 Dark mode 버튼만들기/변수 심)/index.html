@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <title>변수문법과 Dark mode 버튼만들기/변수 심화학습시간 & 저번시간 숙제</title>
+
+  </head>
+  <body class="dark">
+    <span class="badge bg-dark">Dark 🔄</span>
+
+    <p>윤하윤입니다</p>
+    
+
+    <script>
+      
+      //var 변수이름 = 변수에 넣을 값;
+      //var 나이 = 20; 
+      //var 이름 = 'kim'; 
+      //console.log(이름)
+
+      //badge 홀수면 클릭시 내부 글자를 light로 변경
+      //badge 짝수면 클릭시 내부 글자를 Dark로 변경
+      //badge 홀수면 클릭시 내부 글자를 light로 변경
+
+      //뱃지 클릭횟수 저장 기록
+      var count = 0;
+      
+      $('.badge').on('click',function(){
+        count =count+1; //클릭할때마다 1을 집어넣어주세요
+        console.log(count);
+
+        if(count%2==1){
+        $('.badge').html('Light 🔄');
+        $('.dark').addClass('white');
+        
+      }else{
+        $('.badge').html('Dark 🔄');
+        $('.dark').removeClass('white');
+      }
+
+      })
+
+
+      
+      
+      //var 이름  (선언)
+      //var 이름 = 'kim'; (선언 할당)
+      //이름 = 'park' (재할당)
+
+      /// function 함수(){
+      ///   var 이름 = 'kim';
+      /// } (함수안에서 범위)
+
+      //let = 재선언 불가능 /재할당 가능 / 중갈호{}범위안에서민
+      //const = 재선언 불가능 / 재할당 불가능 /중갈호{}범위안에서만
+
+      
+      
+      
+
+
+ 
+
+
+
+    </script>
+
+   
+  </body>
+</html>

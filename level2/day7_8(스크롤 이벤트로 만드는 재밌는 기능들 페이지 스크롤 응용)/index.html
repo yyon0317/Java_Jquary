@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤 이벤트로 만드는 재밌는 기능들/스크롤 이벤트 숙제 해설 & 페이지 스크롤 응용</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <span class="navbar-brand">Navbar</span>
+          <div class="text"></div>
+          <button class="navbar-toggler" type="button">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+    </nav>
+    <!-- list-group -->
+    <ul class="list-group" id="text1">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+    </ul>
+
+    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll; margin-top: 100px;">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur praesentium exercitationem.
+      </div> 
+      
+
+    <div style="height: 1000px;"></div>
+
+    
+
+    <!-- Bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    
+    <script>
+
+        //nav-var .classList.toggle() 
+        document.getElementsByClassName('navbar-toggler')[0].addEventListener('click',function(){
+          document.getElementsByClassName('list-group')[0].classList.toggle('show');
+        })
+      
+        //document도 전체 페이지입니다. window가 약간 더 큰 개념인데 scroll 이벤트리스너는 관습적으로 window에 붙임 
+        //window.scrollY(세로) window.scrollX(가로) window.scrollTo(x, y)고정 window.scrollBy(x, y)현재 위치부터 강제로 스크롤하기
+      
+        //   window.addEventListener('scroll',function(){
+        //     window.scrollTo(0,100);
+        //   })
+
+        //스크롤 내릴 시 폰트사이즈 작게
+        $(window).on('scroll',function(){
+          if(window.scrollY>100){
+            $('.navbar-brand').css('font-size','15px');
+        }else if(window.scrollY<100){
+          $('.navbar-brand').css('font-size','30px');
+        }
+
+        var percent = ($(window).scrollTop() / ($(document).height() - $(window).height())) * 100;
+
+        document.querySelector('.text').innerHTML = percent;
+
+        })
+
+        //박스 끝까지 스크롤시 알림띄우기 
+        //div 스크롤바 내린 양 +100(지금화면에보이는div높이) == div 실제높이일 경우 alert 띄워주세요~
+        //div 박스 스크롤양 + 보이는높이 == 실제높이
+        document.querySelector('.lorem').addEventListener('scroll',function(){
+            var 스크롤양 = document.querySelector('.lorem').scrollTop;
+            var 실제높이 = document.querySelector('.lorem').scrollHeight;
+            var 높이 = document.querySelector('.lorem').clientHeight;
+            console.log(스크롤양,실제높이,높이);
+
+            if(스크롤양+높이>실제높이-10){
+                alert('다읽음')
+            }
+        })
+
+        //스크롤 다룰 때 주의점
+        //스크롤이벤트리스너 안의 코드는 1초에 60번 이상 실행됩니다. 그래서 스크롤 이벤트리스너는 많이 달면 성능저하가 일어나니 스크롤바 1개마다 1개만 씁시다. 
+        
+        //현재 브라우저 높이
+        document.querySelector('html').scrollTop;  //현재 웹페이지 스크롤양
+        document.querySelector('html').scrollHeight; //현재 웹페이지 실제높이
+        document.querySelector('html').clientHeight; //현재 웹페이지 보이는 높이임  
+        window.scrollY
+
+
+
+        //1. 스크롤바 조작할 때 마다 코드실행
+        //2. 박스의 숨겨진 실제 높이
+        //3. 스크롤내린 양
+
+        
+
+
+
+
+    </script>
+
+</body>
+</html>

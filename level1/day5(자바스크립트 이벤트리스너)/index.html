@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>자바스크립트 이벤트리스너</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+<!-- /*crtl+e*/ -->
+	<div class="alert-box" id="alert">
+		<p id="title">알림창임</p>		 
+		<button onclick="알림창열기('','none')">닫기</button></div>
+
+	<button onclick="알림창열기('아이디를 입력하세요','block')">버튼1</button>
+	<button onclick="알림창열기('비번 입력하세요','block')">버튼2</button>
+
+	<p class="title">class</p>
+
+	<button id="close">닫기</button></div>
+
+	<script>
+		//1
+		// function 아이디알림창(){
+		// 	document.getElementById('title').innerHTML = "아이디를 입력하셈";
+		// 	document.getElementById('alert').style.display="block";
+		// }
+
+		// function 비번알림창(){
+		// 	document.getElementById('title').innerHTML = "비밀번호를 입력하셈";
+		// 	document.getElementById('alert').style.display="block";
+		// }
+
+		// 1. p태그 내용을 아이디 입력으로 바꿈 
+		// document.getElementById('title').innerHTML = "아이디를 입력하셈";
+		// 2. 띄움
+		// document.getElementById('title').style.display="block";
+			
+		function 알림창열기(구멍,닫기){
+			document.getElementById('title').innerHTML = 구멍;
+			document.getElementById('alert').style.display = 닫기;
+		}
+		
+
+		//2	getElementsByClassName('클래스명')[순서]0			찾는것 중에 0번째
+		//getElementsByTagName -> 태그명
+		//getElementsByName -> name 속성
+		document.getElementsByClassName('title')[0].innerHTML = '아이디를 입력하세요';
+
+		//3 addEventListener('이벤트명') 'id가 어쩌구인 요소를 클릭하면 안의 코드를 실행해주세요~
+		//어떤 요소 클릭시엔 click 이벤트
+		//마우스갖다대면 mouseover 이벤트 
+		//스크롤하면 scroll 이벤트
+		//키입력하면 keydown 이벤트
+		//이벤트 목록 https://developer.mozilla.org/en-US/docs/Web/Events
+		document.getElementById('close').addEventListener('click',function(){
+			document.getElementById('alert').style.display='none';
+		})
+
+		//콜백함수 함수 파라미터자리에 들어가는 함수를 전문용어로 '콜백함수'
+
+		셀렉터로찾은요소.addEventListener('scroll', function(){} );
+
+
+	
+		
+		
+		
+	</script>
+</body></html>

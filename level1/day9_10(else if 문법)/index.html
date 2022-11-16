@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <title>폼만들며 배워보는 if-else/공백검사 숙제와 else if 문법</title>
+
+  </head>
+  <body>
+
+    <div class="black-bg">
+      <div class="white-bg">
+        <h4>로그인하세요</h4>
+
+        <form action="success.html">
+          <div class="my-3">
+            <input type="text" class="form-control" id="email">
+           </div>
+           <div class="my-3">
+             <input type="password" class="form-control">
+           </div>
+           <button type="submit" class="btn btn-primary" id="send">전송</button>
+           <button type="button" class="btn btn-danger" id="close">닫기</button>
+        </form> 
+        
+      </div>
+    </div>
+
+    <button id="login">로그인</button>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+    <script>
+      //자바스크립트
+      // document.getElementById('login').addEventListener('click',function(){
+      //   document.querySelector('.black-bg').classList.add('show-modal')
+      // })
+
+      //제이쿼리
+      $('#login').on('click',function(){
+        $('.black-bg').addClass('show-modal')
+      })
+      $('#close').on('click',function(){
+        $('.black-bg').removeClass('show-modal')
+      })
+
+
+
+      //전송버튼 누르면
+      //저기 input에 입력한 값이 공백이면 알림창을 띄어줴요!
+
+      document.getElementById('email').value;
+      //자바
+      document.querySelector('#send').addEventListener('click',function(e){
+        if(document.getElementById('email').value == ''){
+          alert('아이디 입력 안함')
+          e.preventDefault();// 폼전송 막음
+        }
+      })
+      //제이쿼리
+      $('#send').on('click',function(){})
+      $('form').on('submit',function(){})
+
+      //if-else 
+      if( 3 > 1 ){
+        console.log('안녕')
+      }else{
+        console.log('안녕2')
+      }
+      //비교연산자
+      //같다고 비교하고 싶으면 ==
+      //크거나 작은지 비교하고 싶으면 >, <
+      //크거나 같다, 작거나 같다는 >=, <=
+      //다른지 비교하고 싶으면 !=
+
+      //if-elseif"그게아니면 만약에"
+
+      if(1==3){
+        console.log('맞아요')
+      }else if(3==3){
+        console.log('맞아요22')
+      }else if(4==5){
+        console.log('맞아요223')
+      }
+
+
+    </script>
+
+   
+  </body>
+</html>

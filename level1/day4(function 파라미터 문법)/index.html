@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>function 파라미터 문법</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+<!-- /*crtl+e*/ -->
+	<div class="alert-box" id="alert">알림창임
+		<button onclick="알림창열기('none')">닫기</button></div>
+
+	<button onclick="알림창열기('block')">버튼</button>
+	<script>
+
+		//자바스크립트 function문법 -긴코드를 축약하고 싶을때 씁니다.코드 재사용
+		//작명 언더바 띄어쓰기 안함 소문자시작
+		function 알림창열기(파라미터){
+			document.getElementById('alert').style.display=파라미터;
+		}
+		
+		//알림창열기('안녕');구명에 안녕 집어 넣어주세요 문자는 따움표 안에
+		//알림창열기('block');
+		//알림창열기('none')
+		
+		//function 알림창닫기(){
+		//document.getElementById('alert').style.display='none';
+		//}
+
+		//파라미터예시2
+
+		function plue(구멍){
+			2 + 구멍
+		}
+
+		plus(1);
+		plus(2);
+		plus(3);
+
+		function 알림창열기(구멍, 구멍2){
+			document.getElementById('구멍2').style.display=구멍1;
+		}
+
+		알림창열기('123','456');
+
+	</script>
+</body></html>

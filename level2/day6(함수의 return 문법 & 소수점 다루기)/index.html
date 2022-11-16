@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수의 return 문법 & 소수점 다루기</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+</head>
+<body>
+    <script>
+        //함수 function 문법은
+        //- 긴 코드 짧게 축약해서 쓸 수 있고 
+        //- 파라미터로 기능업그레이드도 가능하다고 했습니다.
+        //- return을 쓰면 함수를 쓰고나서 원하는 값을 그 자리에 퉤 뱉을 수도 있습니다.
+        
+        function 함수(){
+            return 123
+        }
+
+        var 변수 = 함수();
+        console.log(변수);
+
+        //return return 문법은 함수종료의 뜻
+
+        //예시 : 부가세 계산기 만들기
+
+        console.log(60000 * 0.1);
+        console.log(50000 * 0.1);
+        console.log(80000 * 0.1);
+
+        function vat(a){
+            return a*1.1
+        }
+        console.log(vat(50000));
+        console.log(vat(555555));//소수점 오차 발생 컴퓨터는 이진법을 좋아함(소수점 있는 숫자연산시 주의점)
+
+        //소수점 반올림 하는 법
+
+        function vat(a){
+            var num = (a*1.1).toFixed(1);
+            return parseFloat(num) //문자처럼생긴 숫자를 숫자로 변경해주는 유용한함수입니다.parseInt()는 정수로, parseFloat()는 실수로 변환
+        }
+        console.log(vat(55555));//소수점 오차 발생 컴퓨터는 이진법을 좋아함(소수점 있는 숫자연산시 주의점)
+
+
+        //Q1. 함수에 분과 초를 차례로 파라미터로 입력하면 ms단위로 바꿔서 뱉어주는 함수를 만들어봅시다.(1초 == 1000ms 입니다)
+
+        function 함수(a,b){
+            var 분 = (a*60*1000);
+            var 초 = (b*1000)
+            return 분 += 초
+        }
+
+        function 함수(a, b){
+        var result = (a * 60 + b) * 1000;
+        return result
+        }
+        console.log(함수(1,30))//(90초인데 x 1000 하면 90000)
+
+        //가격을 파라미터로 입력하면 10% 할인가를 뱉는 함수를 만들어봅시다.
+        function 함수(a, b){
+        var result = a * 0.9;
+        if (b == true) {
+            result = result - 1.5;
+        }
+        return parseFloat(result.toFixed(2)) 
+        }
+
+        console.log(함수(70, false))
+    </script>
+
+    
+    
+</body>
+</html>

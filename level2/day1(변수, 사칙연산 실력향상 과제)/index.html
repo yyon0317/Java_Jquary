@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수, 사칙연산 실력향상 과제</title>
+</head>
+<body>
+
+    <p><태조 이성계가 태어난 년도는?</p>
+    <input type="text" id="answer">
+    <button id="send-answer">제출</button>
+    
+
+    <script>
+
+        //(이론)
+        //var 이름  (선언)
+        //var 이름 = 'kim'; (선언 할당)
+        //이름 = 'park' (재할당)
+
+        /// function 함수(){
+        ///   var 이름 = 'kim';
+        /// } (함수안에서 범위)
+
+        //let = 재선언 불가능 /재할당 가능 / 중갈호{}범위안에서만
+        //const = 재선언 불가능 / 재할당 불가능 /중갈호{}범위안에서만
+
+        //1.
+        //내 나이와 출신지역을 자바스크립트 변수에 저장해봅시다. 
+        //나이는 맨날 변하니 재할당가능한 변수,
+        //출신지역은 바뀌지 않으니 재할당불가능한 변수에 저장해보십시오.
+
+        let age = 20;
+        const place = '서울';
+        
+        //2.
+        //철수는 은행에 예금을 하러 갔는데 예금 금액에 따라 이율이 달라지는 것을 보고 크게 당황했습니다.
+        //첫 예금액이 5만원 미만이면 이율이 연 15퍼센트,
+        //첫 예금액이 5만원 이상이면 이율이 연 20퍼센트라고 합니다.
+        //그래서 민준이는
+        //(1) 변수에 예금액을 넣으면
+        //(2) 2년 후의 총 예금액을 자동으로 콘솔창에 출력해주는 기능을 자바스크립트로 만들려고하는데
+        // 어떻게 코드를 짜면 될까요?  
+
+        var 예금액 = 60000;
+        var 미래예금액 = 0;
+
+        if(예금액>=50000){
+            미래예금액 = 예금액*1.2*1.2;
+        }else{  
+            미래예금액 =예금액*1.15*1.15;
+        }
+
+        console.log(미래예금액);
+
+        //3.
+        //방금 마신 커피의 3분의 2만큼 총 2번 리필해주는 카페가 있습니다.
+        //예를 들면 처음 커피를 90ml 주문하면 첫 리필은 60ml를 해주며, 그 다음 리필은 40ml를 해주는 카페입니다.
+        //그럼 처음 주문한 커피 양에 따라서 최대한 마실 수 있는 커피를 콘솔창에 계산해주는 코드를 작성해봅시다.
+
+
+        var first = 360;
+        var total = 0
+        total = first+first * 2 / 3 + first  * 2 /3 * 2 / 3
+
+        console.log(total);
+
+        //4.
+        //유저가 <input>에 답을 적고 제출버튼을 누를 수 있는 퀴즈 UI 입니다.
+        //1. 유저가 답을 맞추면 alert('성공');
+        //2. 유저가 답을 3번 찍어서 못맞추면 alert('멍청아') 를 띄워봅시다.
+        //하단에 자바스크립트 작성하면 됩니다.
+        //(위 문제의 답은 1335입니다) 
+
+        // var count = 0;
+
+        // document.querySelector('#send-answer').addEventListener('click',function(){
+        //     count += 1;
+        //     var 유저답안 = document.querySelector('#answer').value;
+        //     if(유저답안 == '1335'){
+        //         alert('성공')
+        //     }else if(count<=3&&유저답안 !='1335'){
+        //         alert('멍청아')
+        //     }
+        // });
+
+        var count = 0;
+
+        document.querySelector('#send-answer').addEventListener('click',function(){
+            count += 1;
+            var 유저답안 = document.querySelector('#answer').value;
+            if(유저답안 == '1335'){
+                alert('성공')
+            }else if(count<=3 && 유저답안 != '1335'){
+                alert('멍청아')
+            }
+
+        })
+        
+    </script>
+</body>
+</html>

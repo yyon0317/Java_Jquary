@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="main.css">
+    <script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous"></script>
+    <title>모달창만들기와 간단한 애니매이션</title>
+
+  </head>
+  <body>
+
+    <div class="black-bg">
+      <div class="white-bg">
+        <h4>로그인하세요</h4>
+        <button class="btn btn-danger" id="close">닫기</button>
+      </div>
+    </div>
+
+    <button id="login">로그인</button>
+
+    
+
+    <script>
+      //자바스크립트
+      // document.getElementById('login').addEventListener('click',function(){
+      //   document.querySelector('.black-bg').classList.add('show-modal')
+      // })
+
+      //제이쿼리
+      $('#login').on('click',function(){
+        $('.black-bg').addClass('show-modal')
+      })
+      $('.btn').on('click',function(){
+        $('.black-bg').removeClass('show-modal')
+      })
+
+     // one-way ui애니매이션
+     // 1.시작스타일
+      //2.최종스타일
+      //3.원할때 최종스타일로 변하라고 코드추가
+     // 4.transition
+
+
+
+    </script>
+
+   
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규식으로 이메일형식 검증해보기</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="black-bg">
+        <div class="white-bg">
+          <h4>로그인하세요</h4>
+  
+          <form action="success.html">
+            <div class="my-3">
+              <input type="text" class="form-control" id="email">
+             </div>
+             <div class="my-3">
+               <input type="password" class="form-control" id="password">
+             </div>
+             <button type="submit" class="btn btn-primary" id="send">전송</button>
+             <button type="button" class="btn btn-danger" id="close">닫기</button>
+          </form> 
+          
+        </div>
+      </div>
+  
+      <button id="login">로그인</button>
+
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>  
+    <script>
+        //console
+        //'문자'.includes('찾을단어')
+
+        //정규식
+        // /abc/.test('abcdef')
+        // /a/.test('abcde')  //true 
+        // /[a-d]/.test('aefg')  //true
+        // /[가-다]/.test('다라마바')  //true
+        // /[a-zA-Z]/.test('반가워요')  //false  a부터 z까지 아무문자 하나
+        // /[a-zA-Z]/.test('반가워요a') //true
+        // /[ㄱ-ㅎ가-힣ㅏ-ㅣ]/.test('반가워요')  //true
+        // /\S/.test('abcde')   //true  백슬래시S 는 특수문자 포함 아무문자 1개라는 뜻
+        // /^a/.test('abcde')   //true  ^a 라고 적으면 a로 시작하는지 검사
+        // /e$/.test('abcde') //true    e$ 라고 적으면 e로 끝나는지 검사
+        // /(e|f)/.test('abcde')   //true    | 이건 or 기호
+        // /a+/ aaaaa 이런걸 찾고 싶으면 /a+/
+        // /\S+t/ 든 문자 여러개 다음에 t라는 글자가 있냐를 검사해주는 정규식
+        // /\S+@\S+\.\S+/  \. 이라는 기호는 왜 이렇게 썼냐면 마침표는 정규식에서 특수한 문법이기 때문에 마침표 문법을 쓰는게 아니라 진짜 마침표를 찾아달라라는 의미로 쓰려면 백슬래시를 앞에 붙여야합
+
+        //구글에 regex test 정규식 입력하고 테스트하는 홈페이지
+
+        //제이쿼리
+        $('#login').on('click',function(){
+            $('.black-bg').addClass('show-modal')
+        })
+        $('#close').on('click',function(){
+            $('.black-bg').removeClass('show-modal')
+        })
+
+
+        //이메일 형식
+        document.querySelector('#send').addEventListener('click',function(e){
+            var 입력한값 = document.getElementById('email').value;
+            if (입력한값 == ''){
+                alert('아이디입력안함');
+                e.preventDefault();// 폼전송 막음
+            }if(/\S+@\S+\.\S+/.test(입력한값) ==false ){
+                alert('이메일 형식 아님');
+                e.preventDefault();// 폼전송 막음
+            }
+        });
+
+        //비밀번호 형식
+
+        document.querySelector('#send').addEventListener('click',function(e){
+            var 비밀번호 = document.getElementById('password').value;
+            if(비밀번호 ==''){
+                alert('비밀번호입력안함');
+                e.preventDefault();// 폼전송 막음
+            }if (/[A-Z]/.test('비밀번호')==false ){
+                alert('비밀번호 대문자 입력하세요');
+                e.preventDefault();// 폼전송 막음
+            }
+        })
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

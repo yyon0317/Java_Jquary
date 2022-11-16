@@ -1,0 +1,23 @@
+@charset "utf-8";
+:root{
+    scroll-behavior : auto 
+}
+
+
+.list-group{
+    display: none;
+}
+.show{
+    display: block;
+}
+
+.navbar {
+    position : fixed;
+    width : 100%;
+    z-index : 5;
+    top: 0;
+  }
+  .navbar-brand {
+    font-size : 30px;
+    transition : all 1s;
+  }
