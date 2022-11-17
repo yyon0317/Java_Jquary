@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select 3 : forEach, for in 반복문</title>
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form class="container my-5 form-group">
+        <p>상품선택</p>
+        <select class="form-select mt-2">
+          <option>모자</option>
+          <option>셔츠</option>
+          <option>바지</option>
+        </select>
+        <select class="form-select mt-2 form-hide">
+        </select>
+    </form>
+    <div id="test">
+    </div>
+
+    <!-- Bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    
+    <script>
+        //html 생성하는 법 1
+        //div 안에 p태그가 생성 - document.createElement() 쓰면 html 자료를 하나 생성해줍니다.
+        var a = document.createElement('p');
+        a.innerHTML = '안녕';
+        document.querySelector('#test').appendChild(a);
+
+        //html 생성하는 법 2
+        //문자자료로 html을 만든 다음 - insertAdjacentHTML() 안에 넣고 - 'beforeend' 이건 안쪽 맨 밑에 추가하라는 뜻
+        //자바스크립트
+        var a = '<p>안녕</p>';
+        document.querySelector('#test').insertAdjacentHTML('beforeend', a);
+        //제이쿼리
+        //append는 안쪽 맨 밑에 추가
+        var a = '<p>안녕</p>';
+        $('#test').append(a);
+
+        //html을 미리 만들어놓지말고 자바스크립트로 html을 생성
+        //서버에서 데이터를 받아와서 "데이터 갯수만큼 <option> 생성해주세요~" 라고 코드를 짜놓습니다.
+            
+               var pants = [28,30,32,34]; 
+               var shirts = [95, 100, 105] 
+
+            $('.form-select').eq(0).on('input', function(){
+
+            var value = $('.form-select').eq(0).val();
+            if (value == '셔츠') {
+            $('.form-select').eq(1).removeClass('form-hide');
+            $('.form-select').eq(1).html('');
+            shirts.forEach(function(a){
+                $('.form-select').eq(1).append(`<option>${a}</option>`)
+            })
+            }
+            else if (value == '바지'){
+            $('.form-select').eq(1).removeClass('form-hide');//일단 둘 째 <select> 보여주셈 
+            $('.form-select').eq(1).html('');// 둘 째 <select> 안에 비워주셈
+            pants.forEach(function(a,i){
+                //pants 안의 데이터 갯수만큼 forEach 콜백함수 안에 있는 코드가 실행
+                //첫 파라미터는 반복문 돌 때 마다 array 안에 있던 하나하나의 데이터가 되고
+                //둘 째 파라미터는 반복문 돌 때 마다 0부터 1씩 증가하는 정수
+                $('.form-select').eq(1).append(`<option>${a}</option>`)
+            })
+            }
+
+            });
+
+            //for반복문
+            //for(var i = 0; i < pants.length; i++){}
+
+            //for each반복문
+            //array 자료 뒤에 붙일 수 있는 forEach() 라는 기본함수
+            //pants 안의 데이터 갯수만큼 forEach 콜백함수 안에 있는 코드가 실행
+            //첫 파라미터는 반복문 돌 때 마다 array 안에 있던 하나하나의 데이터가 되고
+            //둘 째 파라미터는 반복문 돌 때 마다 0부터 1씩 증가하는 정수
+
+            //object 자료 다룰 때 for in 반복문 가능
+            var obj = { name : 'kim', age : 20 }
+
+            for (var key in obj){
+                console.log(obj[key])
+            }
+
+            //반복문의 용도는 2개
+            //1.코드복붙하고싶으면
+            //2. array, object 자료 다 꺼내고 싶을 때 
+
+
+            //arrow function 문법
+            //function 키워드 대신 => 화살표를 ( ) 우측에 부착해도 똑같이 함수
+            var pants = [28, 30, 32];
+            pants.forEach(function(a){
+                console.log(a)
+            });
+
+            pants.forEach((a) => {
+                console.log(a)
+            });
+
+            //arrow function은 파라미터가 하나면 () 소괄호 생략
+            pants.forEach( a => {
+                console.log(this)
+            });
+
+            //그냥 함수와 arrow function의 기능차이
+            //함수 안에서 this를 써야할 경우 
+            //- 그냥 함수는 함수 안에서 this를 알맞게 재정의해줍니다.
+            //- arrow function은 함수 안에서 this를 재정의해주지 않고 바깥에 있던 this를 그대로 씁니다.
+
+
+
+    </script>
+</body>
+</html>

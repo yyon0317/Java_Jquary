@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax 2 : 상품 더보기 버튼 만들기</title>
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <!-- <div class="col-sm-4">
+              <img src="https://via.placeholder.com/600" class="w-100">
+              <h5>Card title</h5>
+              <p>가격 : 70000</p>
+            </div> -->
+        </div>
+      </div> 
+    
+    
+    <script>
+
+
+        var products = [
+           { id : 0, price : 70000, title : 'Blossom Dress' },
+           { id : 1, price : 50000, title : 'Springfield Shirt' },
+           { id : 2, price : 60000, title : 'Black Monastery' }
+         ];
+
+        //a = produtcs 안에 데이터  i = 0부저 증가하는 정수 ${products[i].title}
+         products.forEach(function(a,i){
+            var 템플릿 = `<div class="col-sm-4">
+              <img src="https://via.placeholder.com/600" class="w-100">
+              <h5>${a.title}</h5>
+              <p>가격 : ${a.price}</p>
+            </div>`;
+         $('.row').eq(0).append(템플릿);
+         });
+         
+
+    </script>
+
+
+<div class="container">
+    <button class="btn btn-danger" id="more">더보기</button>
+  </div>
+  
+  <!-- <script>
+    $('#more').click(function(){
+      $.get('https://codingapple1.github.io/js/more1.json')
+        .done((data)=>{
+          
+          data.forEach((a, i)=>{
+            var 템플릿 = 
+            `<div class="col-sm-4">
+              <img src="https://via.placeholder.com/600" class="w-100">
+              <h5>${data[i].title}</h5>
+              <p>가격 : ${data[i].price}</p>
+            </div>`;
+            $('.row').append(템플릿)
+          })
+          
+        });
+    });
+  </script> -->
+
+
+
+
+  
+  <script>
+    //응용 
+    //템플릿 추가하는 함수
+    function template(data){
+        data.forEach((a,i) => {
+        var template =
+        `<div class="col-sm-4">
+                <img src="https://via.placeholder.com/600" class="w-100">
+                <h5>${data[i].title}</h5>
+                <p>가격 : ${data[i].price}</p>
+            </div>`
+        $('.row').append(template);
+
+    });
+    }
+
+    //더보기
+    var btn = 0;
+    $('#more').on('click',function(){
+        if(btn == 0){
+            $.get('https://codingapple1.github.io/js/more1.json')
+            .done(function(data){
+            template(data)
+            btn++;
+            })
+        }
+        else if(btn == 1){
+            $.get('https://codingapple1.github.io/js/more2.json')
+            .done(function(data){
+            template(data)
+            btn++;
+            })
+        }
+        else{
+            $('#more').css({'display':'none'});
+        }
+
+    })
+
+</script>
+
+
+ 
+</body>
+</html>

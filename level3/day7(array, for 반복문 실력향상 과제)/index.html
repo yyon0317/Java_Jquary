@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array, for 반복문 실력향상 과제</title>
+</head>
+<body>
+    <script>
+        //Q. Array에서 철수라는 자료를 찾고 싶습니다.
+
+        var 출석부 = ['흥민', '영희', '철수', '재석'];
+
+        function 이름찾기(name){
+         for (var i = 0; i < 4; i++) {
+            if ( name == 출석부[i]) {
+              console.log('있어요')
+            }
+        }
+        }
+
+        이름찾기('철수');
+        이름찾기('철수');
+
+
+        //구구단을 콘솔창에 출력하고 싶습니다.
+
+        for (let k = 2; k < 10; k++) {
+            for (let i = 1; i < 10; i++) {
+                console.log(k * i)
+            }
+        }
+
+
+        //평균점수 계산기 만들기 
+        var arr = [80, 80, 80, 80];
+        function 함수(arr, b){
+        var result = 0;
+
+        for ( let i = 0; i < arr.length; i++ ) {
+            result = result + arr[i]
+        }
+        
+        if (result/arr.length < b) {
+            console.log('올랐네요');
+        } else {
+            console.log('같거나 떨어졌네요 재수추천')
+        }
+        }
+
+        함수([2,3,4], 10);  //올랐네요 출력될듯 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

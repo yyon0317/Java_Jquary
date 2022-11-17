@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>약간 복잡한 Array & Object 데이터바인딩</title>
+</head>
+<body>
+    <div class="contaniner mt-3">
+        <div class="card p-3">
+            <span class="car-title">상품명</span>  
+            <span class="car-price">가격</span>
+        </div>
+    </div>
+
+    <script>
+        //object 안에 array/object도 집어넣을 수 있음
+        //array 안에 array/object 넣어도됨
+        var car2 = { name : '소나타', price : [50000, 3000, 4000] } 
+        document.querySelector('.car-title').innerHTML = car2.name;
+        document.querySelector('.car-price').innerHTML = car2.price[0];
+
+        //개발방식1.2
+        //1.서버에서 html을 미리 완성해서 고객에게 보내줌 (server-side rendering)
+        //2.서버가 비어있는 html과 데이터만 보내줌 그리고 자바스크립트를 이용해서 고객 브라우저안에서 html을 완성합니다. (client-side rendering)
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>
