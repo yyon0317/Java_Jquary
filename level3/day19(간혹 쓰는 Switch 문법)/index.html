@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간혹 쓰는 Switch 문법</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="quiz">
+        <h4>물에 빠지면 누구먼저 구할 것임?</h4>
+        <button>와이프</button>
+        <button>부모님</button>
+        <button>강아지</button>
+        <button>키우던 개</button>
+    </div>
+    
+
+    <script>
+        let 변수 = 2+5;
+        switch(변수 ==3){
+            case 3:변수
+            alert('변수가 3 이에요.');
+            break
+            case 4:변수
+            alert('변수가 4 이에요.');
+            break
+            default:변수
+            alert('아무것도 해당 안됨.')
+        }
+
+        document.querySelector('#quiz').addEventListener('click',function(e){
+      
+            switch(e.target.innerHTML){
+                case '와이프':
+                alert('효자네요');
+                break
+            } 
+           
+        })
+
+
+
+
+    </script>
+</body>
+</html>

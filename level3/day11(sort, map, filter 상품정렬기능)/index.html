@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sort, map, filter 상품정렬기능</title>
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <!-- <div class="col-sm-4">
+              <img src="https://via.placeholder.com/600" class="w-100">
+              <h5>Card title</h5>
+              <p>가격 : 70000</p>
+            </div> -->
+        </div>
+      </div> 
+    
+    
+    <script>
+
+
+        var products = [
+           { id : 0, price : 70000, title : 'Blossom Dress' },
+           { id : 1, price : 50000, title : 'Springfield Shirt' },
+           { id : 2, price : 60000, title : 'Black Monastery' }
+         ];
+
+        //a = produtcs 안에 데이터  i = 0부저 증가하는 정수 ${products[i].title}
+         products.forEach(function(a,i){
+            var 템플릿 = `<div class="col-sm-4">
+              <img src="https://via.placeholder.com/600" class="w-100">
+              <h5>${a.title}</h5>
+              <p>가격 : ${a.price}</p>
+            </div>`;
+         $('.row').eq(0).append(템플릿);
+         });
+         
+
+    </script>
+
+
+  <div class="container">
+    <button class="btn btn-danger" id="more">더보기</button>
+  </div>
+  <div class="container my-3">
+    <button class="btn btn-danger" id="sort1">다나가순정렬</button>
+  </div>
+  <div class="container my-3">
+    <button class="btn btn-danger" id="filter">6만원이하</button>
+  </div>
+  
+  <script>
+    $('#more').click(function(){
+      $.get('https://codingapple1.github.io/js/more1.json')
+        .done((data)=>{
+          
+          data.forEach((a, i)=>{
+            var 템플릿 = 
+            `<div class="col-sm-4">
+              <img src="https://via.placeholder.com/600" class="w-100">
+              <h5>${data[i].title}</h5>
+              <p>가격 : ${data[i].price}</p>
+            </div>`;
+            $('.row').append(템플릿)
+          })
+          
+        });
+    });
+
+    //응용1. 가나다순 정렬버튼?
+    //sort 함수 작동원리 
+    //- a, b는 array안에 있던 자료들임
+    //- return 우측이 양수면 a를 우측으로 보냄
+    //- return 우측이 음수면 b를 우측으로 보냄 
+    //- array 안의 자료를 다 끌고와서 a, b에 계속 넣어봄
+    //(1) a, b가 '가', '다' 일 경우 return 우측에 양수가 들어가야 다나가순 정렬이 됩니다. 
+    //(2) a, b가 '다', '나' 일 경우 return 우측에 음수가 들어가야 다나가순 정렬이 됩니다. 
+    //(3) a, b가 '가', '나' 일 경우 return 우측에 양수가 들어가야 다나가순 정렬이 됩니다. 
+    //a < b 일 경우 return 우측에 양수가 들어가면 되고 
+    //a > b 일 경우 return 우측에 음수가 들어가면 됩니다. 
+    //(자바스크립트는 문자끼리 부등호비교가 가능합니다. ㄱ보다 ㅎ 이게 더 큽니다.
+    var 어레이 = ['가', '다', '나'];
+    어레이.sort(function(a, b){
+      if (a < b) {
+        return 1 
+      } else {
+        return -1
+      }
+    });
+    console.log(어레이); //다나가
+
+    //다나가 순서
+    $('#sort1').click(function(){
+      var products1 =
+    products.sort(function(a, b){
+      
+    if (a.title < b.title) {
+      return 1
+    } else {
+      return -1
+    }
+    });
+  
+    $('.row').html(''); //카드 다 없애주셈
+    products1.forEach((a, i)=>{
+      var 템플릿 = `
+              <div>상품명은 ${products1[i].title}</div>
+           
+       `;
+    $('.row').append(템플릿);
+    })
+    });
+
+
+
+    //filter
+    $('#filter').click(function(){
+      
+      var newProduct = products.filter(function(a){
+        return a.price <= 60000
+      });
+      
+      //console.log(newProduct) 
+$('.row').html(''); //카드 다 없애주셈
+      newProduct.forEach((a, i)=>{
+            var 템플릿 = 
+            `<div class="col-sm-4">
+              <img src="https://via.placeholder.com/600" class="w-100">
+              <h5>${newProduct[i].title}</h5>
+              <p>가격 : ${newProduct[i].price}</p>
+            </div>`;
+            $('.row').append(템플릿)
+          })
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+
+ 
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM이라는 용어 개념정리 & load 이벤트</title>
+</head>
+<body>
+    <script>
+        // DOM  Document Object Model 이라는 뜻
+        // HTML을 자바스크립트가 해석할 수 있는 문법으로 변환
+
+        <div style="color : red">안녕하세요</div>
+        //
+        
+        document.div1.innerHTML = '안녕' 
+        //위 변수를 document object라고 부릅니다. 간지나게 + model이라고 붙여서 Document Object Model이라고 합니다.
+        //자바스크립트가 HTML에 대한 정보들 (id, class, name, style, innerHTML 등)을object 자료로 정리한걸 DOM
+
+        //브라우저는 HTML 문서를 위에서 부터 읽으며 DOM을 생성
+        //자바스크립트는 DOM이 생성된 경우에만 HTML을 변경
+
+        //자바스크립트 실행을 약간 나중으로 미루는 방법
+        $(document).ready(function(){ 코드 })
+        document.addEventListener('DOMContentLoaded', function() {  코드 })
+        //이 이벤트리스너들은 "HTML을 다 읽어들였는지"를 알려주는 이벤트리스너
+        //예시
+        <script>
+        document.addEventListener('DOMContentLoaded', function() { 
+            document.getElementById('test').innerHTML = '안녕'
+        })
+        </script>
+
+        <p id="test">임시글자</p>
+
+        //load 이벤트리스너
+        //load 라는 이벤트리스너를 사용하면 DOM 생성뿐만 아니라 이미지, css, js파일이 로드가 됐는지도 체크가능
+
+        셀렉터로찾은이미지.addEventListener('load', function(){
+        //이미지 로드되면 실행할 코드 
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

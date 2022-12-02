@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캐러셀에 스와이프 기능 만들기</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <style>
+        .slide-container{
+             width: 300vw;/*vw 단위는 브라우저 폭에 비례한 단위입니다. 100vw는 브라우저 폭의 100%입니다.  */
+            /* transition: all 1s; */
+            /* transform: translateX(-100vw); margin-left:-100vw;*/
+        }
+        .slide-box{
+            width: 100vw;
+            float: left;
+        }
+        .slide-box img {
+             width: 100%;
+        } 
+    </style>
+</head>
+<body>
+    <!-- 슬라이드되는 UI들을 캐러셀 -->
+    <!-- one-way 애니메이션들어간 UI 만드는 법은
+    1. 애니메이션 시작 전 화면 만들기
+    2. 애니메이션 종료 후 화면 만들기
+    3. 언제 종료화면으로 변할지 JS 코드짜기
+    4. transition 추가하기 
+    이거 그대로 하면 된다고 했습니다.  -->
+        <div style="overflow: hidden;">
+    <div class="slide-container">
+        <div class="slide-box" draggable="false">
+            <img src="car1.png" alt="car">
+        </div>
+        <div class="slide-box">
+            <img src="car2.png" alt="car">
+        </div>
+        <div class="slide-box">
+            <img src="car3.png" alt="car">
+        </div>
+    </div>
+</div>
+
+<button class="slide-1">1</button>
+<button class="slide-2">2</button>
+<button class="slide-3">3</button>
+<button class="next">다음</button>
+<button class="prev">이전</button>
+
+<script>
+    //드래그 스와이프
+    //기능1. 드래그한 거리만큼 사진도 왼쪽으로 움직여야함
+    //기능2. 마우스 떼었을 때 일정거리 이상 이동했으면 사진2 보여줌, 아니면 다시 사진1 보여줌
+
+    //event mousedown mouseup mousemove
+    //mousedown 마우스 눌렀을때
+    //mouseup 마우스 땟을때
+    //mousemove 마우스 움직였을때
+    //** 함수안에 있는 변수는 밖에서 사용 할 수 없음 밖에서 전역변수라함
+    var 시작좌표 = 0;
+    var 눌렀냐 = false;
+
+    $('.slide-box').eq(0).on('mousedown', function(e){
+        시작좌표 = e.clientX;
+        눌렀냐 = true;
+    });
+    $('.slide-box').eq(0).on('mousemove', function(e){
+       // console.log(시작좌표 - e.clientX); //이동거리
+        console.log(e.clientX - 시작좌표); //양수나오는 좌표이해
+        
+        if(눌렀냐 == true){
+            $('.slide-container').css('transform', `translateX( ${e.clientX - 시작좌표}px )`);
+        }
+    });
+    $('.slide-box').eq(0).on('mouseup', function(e){
+    눌렀냐 = false;
+        //기능2. 마우스 떼었을 때 일정거리 이상 이동했으면 사진2 보여줌, 아니면 다시 사진1 보여줌
+    if (e.clientX - 시작좌표 < 100) {
+      $('.slide-container').css('transition','all 0.5s').css('transform', 'translateX(-100vw)');
+    } else {
+      $('.slide-container').css('transition','all 0.5s').css('transform', 'translateX(0vw)');
+    }
+    setTimeout(()=>{
+        //transitio 많이 사용하면 이상해짐
+        $('.slide-container').css('transition','none');
+    })
+    
+  });
+
+
+
+  //터치하고싶으면
+
+  $('.slide-box').eq(0).on('touchstart', function(){
+    //e.clientX를 e.touches[0].clientX
+    //touchend 이벤트리스너에선 e.clientX 말고 e.changedTouches[0].clientX 
+    시작좌표 = e.touches[0].clientX;
+    생략
+  })
+
+  $('.slide-box').eq(0).on('touchmove', function(){
+    생략
+  })
+
+  $('.slide-box').eq(0).on('touchend', function(){
+    생략
+  })
+
+
+    //Hammer.js 같은거 가져다쓰면 조금 쉽게 기능개발이 가능합니다. 
+    //- 브라우저 호환성도 알아서 잡아주고
+    //- 이벤트리스너 6개대신 1개만 써도 되고 
+    //- 스와이프, pinch, rotate 등 여러 제스쳐를 감지하는 이벤트리스너 제공
+
+
+
+
+
+</script>
+
+</body>
+</html>
